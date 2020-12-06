@@ -1,0 +1,5 @@
+{
+    "cmd": ["python", "automate.py"],
+    "selector": "source.c++",
+    "file_regex": "^\\s*File \"(...*?)\", line ([0-9]*)"
+}
