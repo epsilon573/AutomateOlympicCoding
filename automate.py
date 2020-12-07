@@ -2,20 +2,30 @@ import json
 import urllib.request
 from bs4 import BeautifulSoup
 from pywinauto import Application
+import os
+import sys 
 
+if(len(sys.argv)==1):
+	app = Application(backend='uia')
+	app.connect(title_re=".*Chrome.*")
+	dlg = app.top_window()
+	url = dlg.child_window(title="Address and search bar", control_type="Edit").get_value()
+	url = "https://" + url
+	filename = "solution.cpp__tests"
+else:
+	url = sys.argv[1]
+	filename = sys.argv[2] + ".cpp__tests"
 
-app = Application(backend='uia')
-app.connect(title_re=".*Chrome.*")
-dlg = app.top_window()
-url = dlg.child_window(title="Address and search bar", control_type="Edit").get_value()
-
-url = "https://" + url
 if( url.find('https://codeforces.com/') == -1):
-	with open("code.cpp__tests", "w") as outfile:
+	with open("solution.cpp__tests", "w") as outfile:
 		outfile.write('Please open a problem page')
 	exit()
 else:
-	page = urllib.request.urlopen(url)
+	try:
+		page = urllib.request.urlopen(url)
+	except:
+		print(url)
+		exit()
 soup = BeautifulSoup(page, features = "html.parser")
 
 x = soup.body.find_all('div', attrs={'class' : 'input'})
@@ -53,5 +63,5 @@ for i in range(sz):
 	final.append(dic) 
 
 
-with open("code.cpp__tests", "w") as outfile: 
+with open(filename, "w") as outfile: 
     outfile.write(json.dumps(final)) 
