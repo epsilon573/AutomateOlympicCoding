@@ -1,5 +1,13 @@
 {
     "cmd": ["python", "automate.py"],
     "selector": "source.c++",
-    "file_regex": "^\\s*File \"(...*?)\", line ([0-9]*)"
+    "file_regex": "^\\s*File \"(...*?)\", line ([0-9]*)",
+
+    "variants": 
+	[ 
+		{ 
+			"name": "Contest", 
+			"cmd": ["python", "contest.py"]
+		}	
+	]
 }
