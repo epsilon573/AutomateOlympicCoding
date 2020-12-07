@@ -10,9 +10,9 @@ dlg = app.top_window()
 url = dlg.child_window(title="Address and search bar", control_type="Edit").get_value()
 
 url = "https://" + url
-if( url.find('https://codeforces.com/') == -1):
+if( url.find('https://codeforces.com/contest') == -1):
 	with open("solution.cpp__tests", "w") as outfile:
-		outfile.write('Please open a problem page')
+		outfile.write('Please open a contest page')
 	exit()
 else:
 	page = urllib.request.urlopen(url)
