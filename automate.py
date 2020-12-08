@@ -12,6 +12,13 @@ if(len(sys.argv)==1):
 	url = dlg.child_window(title="Address and search bar", control_type="Edit").get_value()
 	url = "https://" + url
 	filename = "solution.cpp__tests"
+elif(len(sys.argv)==2):
+	app = Application(backend='uia')
+	app.connect(title_re=".*Chrome.*")
+	dlg = app.top_window()
+	url = dlg.child_window(title="Address and search bar", control_type="Edit").get_value()
+	url = "https://" + url
+	filename = sys.argv[1] + "__tests"
 else:
 	url = sys.argv[1]
 	filename = sys.argv[2] + ".cpp__tests"
