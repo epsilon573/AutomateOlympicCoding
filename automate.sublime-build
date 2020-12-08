@@ -1,5 +1,5 @@
 {
-    "cmd": ["python", "automate.py"],
+    "cmd": ["python", "automate.py", "$file_name"],
     "selector": "source.c++",
     "file_regex": "^\\s*File \"(...*?)\", line ([0-9]*)",
 
