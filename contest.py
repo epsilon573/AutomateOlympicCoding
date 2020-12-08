@@ -46,7 +46,7 @@ if not os.path.exists(path):
 for problems in problem_tags:
 	problem_path = os.path.join(path,problems)
 	print(problem_path)
-	with open("solution.cpp") as main:
+	with open("template.cpp") as main:
 	    with open(problem_path+".cpp", "w") as sec:
 	        for line in main:
 	                sec.write(line)
