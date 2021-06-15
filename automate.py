@@ -42,12 +42,21 @@ res = ""
 out = ""
 
 for elements in x:
+	for br in elements.find_all("br"):
+		br.replace_with("\n")
 	res += elements.text
 for elements in y:
 	out += elements.text
 
-res = res.split('Input\n')
-out = out.split('Output\n')
+if 'Input\n' in res:
+	res = res.split('Input\n')
+else:
+	res = res.split('Input')
+
+if 'Output\n' in out:
+	out = out.split('Output\n')
+else:
+	out = out.split('Output')
 
 res.remove("")
 out.remove("")
